@@ -17,6 +17,9 @@ module.exports = {
       fontFamily: {
         monda: ['var(--font-monda)'],
       },
+      screens: {
+        '3xl': '1600px',
+      },
     },
   },
   plugins: [require('daisyui')],

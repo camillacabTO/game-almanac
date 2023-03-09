@@ -6,15 +6,45 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <main>
-      <h1 className="text-3xl font-bold text-teal-600">
-        Hello world!
-      </h1>
-      <button className="btn btn-outline btn-info">Info</button>
-      <button className="btn btn-outline btn-success">Success</button>
-      <button className="btn btn-outline btn-warning">Warning</button>
-      <button className="btn btn-outline btn-error">Error</button>
-      
-    </main>
+    <>
+      <header>
+        <h1>Latest Games Trending</h1>
+        <select className='select select-secondary w-full max-w-xs'>
+          <option disabled selected>
+            Filter by Platform
+          </option>
+          <option>Java</option>
+          <option>Go</option>
+          <option>C</option>
+          <option>C#</option>
+          <option>C++</option>
+          <option>Rust</option>
+          <option>JavaScript</option>
+          <option>Python</option>
+        </select>
+      </header>
+      <div>
+        <div>
+          <div className='card w-96 bg-neutral shadow-xl border border-primary'>
+            <figure>
+              <Image
+                src='https://github.com/camillacabTO.png'
+                alt='avatar'
+                width={500}
+                height={400}
+              />
+            </figure>
+            <div className='card-body'>
+              <h2 className='card-title'>Games!</h2>
+              <p>If a dog chews shoes whose shoes does he choose?</p>
+              <div className='card-actions justify-end'>
+                <div className='badge badge-secondary'>Fashion</div>
+                <div className='badge badge-outline'>Products</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
