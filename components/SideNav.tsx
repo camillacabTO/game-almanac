@@ -1,22 +1,33 @@
+import Link from 'next/link'
+
 export default function SideNav() {
   return (
-    <div className='bg-primary-content flex-initial w-52 hidden md:block'>
-      <nav className='h-1/4'>
-        <ul className='mt-6 flex flex-col justify-around h-full pl-6'>
+    <div className='bg-primary-content flex-initial pl-4 min-w-[200px] hidden md:block min-h-full'>
+      <nav className='h-56 w-full'>
+        <ul className='mt-6 flex flex-col justify-around h-full text-right'>
           <li>
-            <a href='#' className='hover:text-accent'>
+            <Link
+              href='/top-games'
+              className='hover:text-accent pr-4 justify-end border-r-8 border-primary'
+            >
               <span>Top Rated Games</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='#' className='hover:text-accent'>
+            <Link
+              href='/new-games'
+              className='hover:text-accent pr-4 justify-end border-r-8 border-primary-content'
+            >
               <span>New Releases</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='#' className='hover:text-accent'>
+            <Link
+              href='/favorite-games'
+              className='hover:text-accent pr-4 justify-end border-r-8 border-primary-content'
+            >
               <span>Favorite Games</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

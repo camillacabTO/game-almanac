@@ -22,11 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={`${monda.variable} font-monda min-h-screen w-full`}>
+      <body className={`${monda.variable} font-monda`}>
         <TopNav />
-        <main className='flex'>
+        <main className='flex min-h-screen'>
           <SideNav />
-          <div className='flex-auto bg-yellow-200'>{children}</div>
+          <div className='flex-auto px-6'>{children}</div>
         </main>
       </body>
     </html>
