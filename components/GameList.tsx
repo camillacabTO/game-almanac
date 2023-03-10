@@ -2,17 +2,24 @@ import GameCard from './GameCard'
 import OrderBySelect from '@/components/PlatformSelect'
 import { Game } from '@/types'
 import axios from 'axios'
+import Pagination from './Pagination'
 
 type GamesResponse = {
   previous: string | null
   next: string | null
   results: Game[]
 }
+
+async function getData(url: string) {
+  const { data }: { data: GamesResponse } = await axios.get(url)
+  return data
+}
+
 export default async function GameList(props: {
   url: string
   heading: string
 }) {
-  const { data }: { data: GamesResponse } = await axios.get(props.url)
+  const data = await getData(props.url)
 
   return (
     <>
@@ -35,11 +42,7 @@ export default async function GameList(props: {
           ))}
         </div>
       </div>
-      {/* has to be a functional component */}
-      <div className='btn-group grid grid-cols-2 w-80 my-4 mx-auto'>
-        <button className='btn btn-outline'>Previous page</button>
-        <button className='btn btn-outline'>Next</button>
-      </div>
+      <Pagination previous={data.previous} next={data.next} />
     </>
   )
 }

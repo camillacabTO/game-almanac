@@ -52,11 +52,14 @@ export default function TopNav() {
           </div>
         </div>
         <div className='dropdown dropdown-end md:hidden text-sm'>
-          <label tabindex='0' class='btn m-1'>
+          <label
+            // tabIndex='0'
+            className='btn m-1'
+          >
             X
           </label>
           <ul
-            tabindex='0'
+            // tabIndex='0'
             className='dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52'
           >
             <li>

@@ -1,16 +1,23 @@
 import GameList from '@/components/GameList'
-import OrderBySelect from '@/components/PlatformSelect'
-import Image from 'next/image'
 import styles from './page.module.css'
 
-export default function Home() {
+type Props = {
+  searchParams?: {
+    page?: string
+  }
+}
+
+export default function Home(props: Props) {
+  let originalUrl =
+    'https://api.rawg.io/api/games?key=8bce72d488cd4b87ae7ccf04176d2419'
+
+  if (props.searchParams?.page) {
+    originalUrl = `${originalUrl}&page=${props.searchParams?.page}`
+  }
+
   return (
     <>
-      <GameList
-        url='https://api.rawg.io/api/games?key=8bce72d488cd4b87ae7ccf04176d2419&platforms=1'
-        heading='Recently added and trending'
-      />
-      {/* ??? */}
+      <GameList url={originalUrl} heading='Recently added and trending' />
     </>
   )
 }

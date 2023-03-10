@@ -1,9 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function PlatformSelect() {
-  const [value, setValue] = useState('4')
+  const [value, setValue] = useState('')
+  const router = useRouter()
 
   return (
     <select
@@ -11,12 +13,10 @@ export default function PlatformSelect() {
       value={value}
       onChange={(e) => {
         setValue(e.target.value)
+        router.replace(`/platforms/${e.target.value}`)
       }}
     >
-      <option disabled selected>
-        Filter by Platform
-      </option>
-      {/* look for platforms ids */}
+      <option>Filter by Platform</option>
       <option value='4'>PC</option>
       <option value='186'>Xbox Series S/X</option>
       <option value='1'>Xbox One</option>

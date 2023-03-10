@@ -6,11 +6,12 @@ export default function GameCard(game: Game) {
     <div className='card bg-neutral shadow-xl border border-primary'>
       <figure>
         <Image
-          className='h-[160px]'
+          className='h-[180px] w-full'
           src={game.background_image}
           alt='avatar'
-          width={300}
-          height={200}
+          width={220}
+          height={160}
+          // make it faster
         />
       </figure>
       <div className='card-body'>
