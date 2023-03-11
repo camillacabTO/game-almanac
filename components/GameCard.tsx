@@ -7,11 +7,11 @@ export default function GameCard(game: Game) {
       <figure>
         <Image
           className='h-[180px] w-full'
-          src={game.background_image}
+          src={game.background_image ? game.background_image : ''}
+          // add default image
           alt='avatar'
-          width={220}
-          height={160}
-          // make it faster
+          width={200}
+          height={140}
         />
       </figure>
       <div className='card-body'>
@@ -19,7 +19,7 @@ export default function GameCard(game: Game) {
         <p>Released: {game.released}</p>
         <p>Rating: {game.rating}</p>
         <div className='card-actions justify-end'>
-          {game.platforms.map((platform) => (
+          {game.platforms?.map((platform) => (
             <div className='badge badge-secondary' key={platform.platform.id}>
               {platform.platform.name}
             </div>

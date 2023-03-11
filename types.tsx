@@ -10,3 +10,9 @@ export interface Game {
 export interface Platform {
   platform: { id: number; name: string }
 }
+
+export type GamesResponse = {
+  previous: string | null
+  next: string | null
+  results: Game[]
+}

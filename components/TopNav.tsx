@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import Search from './Search'
 
 export default function TopNav() {
   return (
@@ -14,11 +15,7 @@ export default function TopNav() {
       </h1>
       <div className=''>
         {/* client component */}
-        <input
-          type='text'
-          placeholder='Search...'
-          className='input input-bordered input-secondary w-full max-w-xs'
-        />
+        <Search />
         <div className='flex-none gap-2'>
           {/* show one of the other */}
           <button className='btn btn-outline btn-primary rounded-full hidden'>

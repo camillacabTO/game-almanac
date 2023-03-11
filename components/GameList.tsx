@@ -1,26 +1,16 @@
 import GameCard from './GameCard'
 import OrderBySelect from '@/components/PlatformSelect'
-import { Game } from '@/types'
+import { Game, GamesResponse } from '@/types'
 import axios from 'axios'
 import Pagination from './Pagination'
 
-type GamesResponse = {
-  previous: string | null
-  next: string | null
-  results: Game[]
-}
-
-async function getData(url: string) {
-  const { data }: { data: GamesResponse } = await axios.get(url)
-  return data
-}
-
-export default async function GameList(props: {
-  url: string
+type GameListProps = {
   heading: string
-}) {
-  const data = await getData(props.url)
+  hasPagination: boolean
+  games: GamesResponse
+}
 
+export default function GameList(props: GameListProps) {
   return (
     <>
       <header>
@@ -28,21 +18,28 @@ export default async function GameList(props: {
         <OrderBySelect />
       </header>
       <div>
-        <div className='grid md:grid-cols-4 gap-4 mt-6'>
-          {data?.results.map((game) => (
-            <GameCard
-              key={game.id}
-              name={game.name}
-              released={game.released}
-              rating={game.rating}
-              background_image={game.background_image}
-              id={game.id}
-              platforms={game.platforms}
-            />
-          ))}
-        </div>
+        {props.games?.results.length === 0 ? (
+          <>No Games Found</>
+        ) : (
+          <div className='grid md:grid-cols-4 gap-4 mt-6'>
+            {props.games?.results.map((game) => (
+              <GameCard
+                key={game.id}
+                name={game.name}
+                released={game.released}
+                rating={game.rating}
+                background_image={game.background_image}
+                id={game.id}
+                platforms={game.platforms}
+              />
+            ))}
+          </div>
+        )}
       </div>
-      <Pagination previous={data.previous} next={data.next} />
+      {/* scroll up after click */}
+      {props.hasPagination && (
+        <Pagination previous={props.games.previous} next={props.games.next} />
+      )}
     </>
   )
 }
