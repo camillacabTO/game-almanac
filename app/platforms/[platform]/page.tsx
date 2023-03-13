@@ -1,5 +1,5 @@
 import GameList from '@/components/GameList'
-import getGamesAPI from '@/util/getGamesAPI'
+import { getGamesAPI } from '@/lib/getGamesAPI'
 import type { Metadata } from 'next'
 
 type Props = {
