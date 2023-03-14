@@ -6,7 +6,6 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 export default function Search() {
   const searchRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
-  const pathname = usePathname()
 
   const createQueryString = (name: string, value: string) => {
     const params = new URLSearchParams()

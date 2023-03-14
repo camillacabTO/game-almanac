@@ -22,7 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={`${monda.variable} font-monda`}>
+      <body
+        className={`${monda.variable} font-monda bg-[url('../assets/ooorganize3.svg')]`}
+      >
         <TopNav />
         <main className='flex min-h-screen'>
           <SideNav />

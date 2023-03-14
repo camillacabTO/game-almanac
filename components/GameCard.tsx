@@ -14,10 +14,11 @@ export default function GameCard(game: Game) {
           height={140}
         />
       </figure>
-      <div className='card-body'>
-        <h2 className='card-title'>{game.name}</h2>
-        <p>Released: {game.released}</p>
-        <p>Rating: {game.rating}</p>
+      <div className='card-body min-h-fit p-4 h-[16rem] '>
+        {/* fix height */}
+        <h2 className='card-title'>{game?.name}</h2>
+        <p>Released: {game?.released}</p>
+        <p>Rating: {game?.rating}</p>
         <div className='card-actions justify-end'>
           {game.platforms?.map((platform) => (
             <div className='badge badge-secondary' key={platform.platform.id}>

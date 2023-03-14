@@ -4,28 +4,27 @@ export interface Game {
   released: string
   rating: number
   background_image: string
-  platforms: Platform[]
+  platforms?: Platform[]
 }
 
 export interface Platform {
   platform: { id: number; name: string }
 }
-// see how will fit prisma schema
 
-export type GamesResponse = {
+export interface GamesResponse {
   previous: string | null
   next: string | null
   results: Game[]
 }
 
-export type Genre = {
+export interface Genre {
   name: string
 }
 
-export type Tag = {
+export interface Tag {
   name: string
 }
-export type Publisher = {
+export interface Publisher {
   name: string
 }
 
@@ -40,4 +39,11 @@ export interface GameDetails {
   genres: Genre[]
   tags: Tag[]
   publishers: Publisher[]
+}
+
+export interface User {
+  image?: string
+  name?: string
+  email: string
+  favorite_games_link?: string
 }

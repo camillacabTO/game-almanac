@@ -13,15 +13,17 @@ export default function TopNav() {
           Game Almanac
         </Link>
       </h1>
-      <div className=''>
-        {/* client component */}
+      <div className='md:w-[25rem] mt-4'>
         <Search />
         <div className='flex-none gap-2'>
           {/* show one of the other */}
-          <button className='btn btn-outline btn-primary rounded-full hidden'>
-            Sign
-          </button>
-          <div className='dropdown dropdown-end ml-3'>
+          <Link
+            href='/signin'
+            className='btn btn-outline btn-primary rounded-full mx-2 md:ml-4'
+          >
+            Sign In
+          </Link>
+          <div className='dropdown dropdown-end ml-3 hidden'>
             <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
               <div className='w-10 rounded-full'>
                 <Image
@@ -49,14 +51,11 @@ export default function TopNav() {
           </div>
         </div>
         <div className='dropdown dropdown-end md:hidden text-sm'>
-          <label
-            // tabIndex='0'
-            className='btn m-1'
-          >
+          <label tabIndex='0' className='btn m-1'>
             X
           </label>
           <ul
-            // tabIndex='0'
+            tabIndex='0'
             className='dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52'
           >
             <li>

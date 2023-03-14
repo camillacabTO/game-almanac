@@ -22,7 +22,7 @@ export default function GameList(props: GameListProps) {
         {props.games?.results.length === 0 ? (
           <>No Games Found</>
         ) : (
-          <div className='grid md:grid-cols-4 gap-4 mt-6'>
+          <div className='grid grid-cols-fluid gap-4 mt-6 px-12 sm:px-0'>
             {props.games?.results.map((game) => (
               <Link href={`games/${game.id}`} key={game.id}>
                 <GameCard
