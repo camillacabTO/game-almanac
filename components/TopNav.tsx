@@ -4,7 +4,7 @@ import Search from './Search'
 
 export default function TopNav() {
   return (
-    <div className='navbar bg-base-100 p-4 flex flex-col md:flex-row justify-between'>
+    <div className='navbar bg-base-100 p-6 flex flex-col md:flex-row justify-between'>
       <h1>
         <Link
           href='/'
@@ -13,7 +13,7 @@ export default function TopNav() {
           Game Almanac
         </Link>
       </h1>
-      <div className='md:w-[25rem] mt-4'>
+      <div className='md:w-[25rem]'>
         <Search />
         <div className='flex-none gap-2'>
           {/* show one of the other */}

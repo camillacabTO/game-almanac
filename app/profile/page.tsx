@@ -19,8 +19,8 @@ export default function page(props: profileProps) {
       <Image
         src={testUser.image ? testUser.image : ''}
         alt='avatar'
-        width={170}
-        height={170}
+        width={180}
+        height={180}
         className='rounded-lg'
       />
       <p>{testUser.name}</p>

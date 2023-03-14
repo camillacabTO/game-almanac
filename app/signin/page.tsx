@@ -1,8 +1,8 @@
 export default function page() {
   return (
     <div className='flex items-center justify-center h-[70%]'>
-      <form className='w-full sm:w-1/3 text-center'>
-        <h1 className='my-11 text-lg'>Sign In here</h1>
+      <form className='w-full sm:w-1/2 lg:w-1/3 text-center'>
+        <h1 className='my-11 text-3xl'>Sign In</h1>
         <button className='btn btn-active btn-primary w-full'>
           Sign In With Google
         </button>
