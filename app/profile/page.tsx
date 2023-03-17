@@ -2,12 +2,16 @@ import { User } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { authOptions } from '../../pages/api/auth/[...nextauth]'
+import { getUser } from '../../prisma/users'
 import { getServerSession } from 'next-auth/next'
 import { Session } from 'next-auth'
-
+import ButtonTest from '@/components/ButtonTest'
 
 export default async function page() {
   const session: Session | null = await getServerSession(authOptions)
+  // const user = await getUser(session?.user?.email)
+  // if (user) console.log('user profile', user)
+
   // make an api call and get user by email from DB
 
   return (
@@ -24,6 +28,7 @@ export default async function page() {
       <Link href={''} className='btn btn-wide'>
         My Favorite Games
       </Link>
+      <ButtonTest />
     </div>
   )
 }
