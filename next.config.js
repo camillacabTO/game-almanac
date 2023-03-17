@@ -5,7 +5,12 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['github.com', 'media.rawg.io', 'lh3.googleusercontent.com'],
+    domains: [
+      'github.com',
+      'media.rawg.io',
+      'lh3.googleusercontent.com',
+      'avatars.githubusercontent.com',
+    ],
   },
 }
 

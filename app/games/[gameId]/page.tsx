@@ -12,7 +12,6 @@ type Props = {
 
 export default async function page(props: Props) {
   const game = await getGameDetails(props.params.gameId)
-  console.log(game)
 
   return (
     <div className='grid auto-rows-[1fr]" md:grid-cols-4 gap-8'>

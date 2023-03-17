@@ -1,34 +1,27 @@
 import { User } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
+import { authOptions } from '../../pages/api/auth/[...nextauth]'
+import { getServerSession } from 'next-auth/next'
+import { Session } from 'next-auth'
 
-type profileProps = {
-  user: User
-}
 
-const testUser: User = {
-  image: 'https://github.com/camillacabTO.png',
-  name: 'Camila Barros',
-  email: 'camillacab@hotmail.com',
-  favorite_games_link: '',
-}
+export default async function page() {
+  const session: Session | null = await getServerSession(authOptions)
+  // make an api call and get user by email from DB
 
-export default function page(props: profileProps) {
   return (
     <div className='flex flex-col gap-12 justify-center items-center h-[75%] text-lg'>
       <Image
-        src={testUser.image ? testUser.image : ''}
+        src={session?.user?.image ? session?.user.image : ''}
         alt='avatar'
         width={180}
         height={180}
         className='rounded-lg'
       />
-      <p>{testUser.name}</p>
-      <p>{testUser.email}</p>
-      <Link
-        href={testUser.favorite_games_link ? testUser.favorite_games_link : ''}
-        className='btn btn-wide'
-      >
+      <p>{session?.user?.name}</p>
+      <p>{session?.user?.email}</p>
+      <Link href={''} className='btn btn-wide'>
         My Favorite Games
       </Link>
     </div>
