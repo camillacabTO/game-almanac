@@ -1,8 +1,10 @@
 import { getGameDetails } from '@/lib/getGamesAPI'
+import AddGameBtn from '@/components/AddGameToFav'
 import { format } from 'date-fns'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { PrismaGame } from '@/types'
 
 type Props = {
   params: {
@@ -37,6 +39,7 @@ export default async function page(props: Props) {
         >
           {game.rating}
         </p>
+        <AddGameBtn game={game} />
       </div>
       <div className='md:col-span-2 space-y-2'>
         <h2>Genre: </h2>

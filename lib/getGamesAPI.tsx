@@ -1,4 +1,5 @@
 import { GamesResponse, GameDetails } from '../types'
+import axios from 'axios'
 
 export async function getGamesAPI(baseUrl: string): Promise<GamesResponse> {
   const res = await fetch(baseUrl)
@@ -18,4 +19,9 @@ export async function getGameDetails(gameID: string): Promise<GameDetails> {
   //   if (!res.ok) return undefined
 
   return res.json()
+}
+
+export async function getFavGames() {
+  const res = await axios.get('/api/user')
+  return res.data
 }

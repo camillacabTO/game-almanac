@@ -3,6 +3,7 @@ import { Monda } from 'next/font/google'
 import TopNav from '@/components/TopNav'
 import SideNav from '@/components/SideNav'
 import AuthProvider from './AuthProvider'
+import QueryWrapper from './QueryWrapper'
 
 export const metadata = {
   title: 'Game Almanac',
@@ -27,11 +28,13 @@ export default function RootLayout({
         className={`${monda.variable} font-monda bg-[url('../assets/ooorganize3.svg')]`}
       >
         {/* <AuthProvider> */}
-        <TopNav />
-        <main className='flex min-h-screen'>
-          <SideNav />
-          <div className='flex-auto px-6'>{children}</div>
-        </main>
+        <QueryWrapper>
+          <TopNav />
+          <main className='flex min-h-screen'>
+            <SideNav />
+            <div className='flex-auto px-6'>{children}</div>
+          </main>
+        </QueryWrapper>
         {/* </AuthProvider> */}
       </body>
     </html>

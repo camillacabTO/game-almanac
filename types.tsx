@@ -7,6 +7,14 @@ export interface Game {
   platforms?: Platform[]
 }
 
+export interface PrismaGame {
+  id: number
+  name: string
+  released: string
+  rating: number
+  background_image: string
+}
+
 export interface Platform {
   platform: { id: number; name: string }
 }
@@ -29,6 +37,7 @@ export interface Publisher {
 }
 
 export interface GameDetails {
+  id: number
   name: string
   description_raw: string
   released: string
@@ -41,9 +50,9 @@ export interface GameDetails {
   publishers: Publisher[]
 }
 
-export interface User {
-  image?: string
-  name?: string
-  email: string
-  favorite_games_link?: string
-}
+// export interface User {
+//   image?: string
+//   name?: string
+//   email: string
+//   favorite_games_link?: string
+// }
