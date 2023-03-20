@@ -53,7 +53,9 @@ export async function POST(request: NextRequest) {
 
     if (alreadyAdded?.User && alreadyAdded?.User.length > 0) {
       return new NextResponse(
-        JSON.stringify({ message: 'This Game already in your favorite list' }),
+        JSON.stringify({
+          message: 'This game is already in your favorite list',
+        }),
         { status: 400 }
       )
     }

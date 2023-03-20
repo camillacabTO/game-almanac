@@ -27,17 +27,7 @@ export default async function page(props: Props) {
           {game.name}
         </h1>
       </div>
-      <div className='md:col-span-2 space-y-2'>
-        <h2>Overall Rating:</h2>
-        <p
-          className={`border w-fit py-1 px-2 rounded-md ${
-            game.rating >= 3.7
-              ? 'border-success text-success'
-              : 'border-warning text-warning'
-          }`}
-        >
-          {game.rating}
-        </p>
+      <div className='md:col-span-2 space-y-2 pt-3'>
         <AddGameBtn game={game} />
       </div>
       <div className='md:col-span-2 space-y-2'>
@@ -50,6 +40,32 @@ export default async function page(props: Props) {
             {genre.name}
           </p>
         ))}
+      </div>
+      <div className='md:col-span-2 space-y-2'>
+        <h2>Overall Rating:</h2>
+        <p
+          className={`border w-fit py-1 px-2 rounded-md ${
+            game.rating >= 3.7
+              ? 'border-success text-success'
+              : 'border-warning text-warning'
+          }`}
+        >
+          {game.rating}
+        </p>
+      </div>
+      <div className='md:col-span-2 space-y-2'>
+        <h2>Metacritic:</h2>
+        <p
+          className={`border w-fit py-1 px-2 rounded-md ${
+            game.metacritic >= 85
+              ? 'border-success text-success'
+              : game.metacritic >= 60
+              ? 'border-warning text-warning'
+              : 'border-warning text-error'
+          }`}
+        >
+          {game.metacritic}
+        </p>
       </div>
       <div className='md:col-span-2 space-y-2'>
         <h2>Released Date: </h2>
@@ -68,7 +84,9 @@ export default async function page(props: Props) {
       </div>
       <div className='md:col-span-2 space-y-2'>
         <h2>Website:</h2>
-        <Link href={game.website}>{game.website}</Link>
+        <Link className='break-words' href={game.website}>
+          {game.website}
+        </Link>
       </div>
       <div className='md:col-span-2'>
         <h2 className='mb-2'>Publishers:</h2>

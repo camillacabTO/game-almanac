@@ -34,6 +34,7 @@ export interface GameDetails {
   description_raw: string
   released: string
   rating: number
+  metacritic: number
   background_image: string
   website: string
   platforms: Platform[]

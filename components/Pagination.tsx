@@ -21,6 +21,8 @@ export default function Pagination(props: {
     previousPage = params.get('page')
   }
 
+  // scroll up after changing page?
+
   return (
     <div className='btn-group grid grid-cols-2 w-80 my-4 mx-auto'>
       {/* disable buttons */}
