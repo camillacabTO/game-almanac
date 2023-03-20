@@ -4,6 +4,7 @@ import { authOptions } from '../../../pages/api/auth/[...nextauth]'
 import { NextResponse } from 'next/server'
 import { type NextRequest } from 'next/server'
 import { Game } from '@/types'
+import { User } from '@prisma/client'
 
 export async function GET(request: NextRequest) {
   const session = await getServerSession(authOptions)
@@ -41,21 +42,76 @@ export async function POST(request: NextRequest) {
   const { id, name, released, rating, background_image }: Game = req.favGame
 
   try {
-    const newFavGame = await prisma.user.update({
-      where: { email: session?.user?.email },
-      data: {
-        favoriteGames: {
-          create: {
-            id,
-            name,
-            released,
-            rating,
-            background_image,
-          },
+    const alreadyAdded = await prisma.favoritedGames.findUnique({
+      where: { id: id },
+      select: {
+        User: {
+          where: { email: session?.user?.email },
         },
       },
     })
-    return new NextResponse(JSON.stringify(newFavGame), { status: 201 })
+
+    if (alreadyAdded?.User && alreadyAdded?.User.length > 0) {
+      return new NextResponse(
+        JSON.stringify({ message: 'This Game already in your favorite list' }),
+        { status: 400 }
+      )
+    }
+
+    const updatedUser = await prisma.user.update({
+      where: { email: session?.user?.email },
+      data: {
+        favoriteGames: {
+          connectOrCreate: {
+            where: { id },
+            create: {
+              id,
+              name,
+              released,
+              rating,
+              background_image,
+            },
+          },
+        },
+      },
+      select: {
+        favoriteGames: true,
+      },
+    })
+    return new NextResponse(JSON.stringify(updatedUser), { status: 201 })
+  } catch (error) {
+    return new NextResponse(JSON.stringify({ err: 'An Error has occured.' }), {
+      status: 403,
+    })
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  const session = await getServerSession(authOptions)
+  const gameId = await request.json()
+
+  if (!session) {
+    return new NextResponse(
+      JSON.stringify({
+        message: 'Please signin to delete game from your favorite list.',
+      }),
+      { status: 401 }
+    )
+  }
+
+  try {
+    const updatedUser = await prisma.user.update({
+      where: { email: session?.user?.email },
+      data: {
+        favoriteGames: {
+          disconnect: [{ id: gameId }],
+        },
+      },
+      select: {
+        favoriteGames: true,
+      },
+    })
+    return new NextResponse(JSON.stringify(updatedUser), { status: 200 })
   } catch (error) {
     return new NextResponse(JSON.stringify({ err: 'An Error has occured.' }), {
       status: 403,

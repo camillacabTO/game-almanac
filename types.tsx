@@ -7,14 +7,6 @@ export interface Game {
   platforms?: Platform[]
 }
 
-export interface PrismaGame {
-  id: number
-  name: string
-  released: string
-  rating: number
-  background_image: string
-}
-
 export interface Platform {
   platform: { id: number; name: string }
 }

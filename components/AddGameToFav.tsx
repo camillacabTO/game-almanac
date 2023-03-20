@@ -1,7 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import { useMutation } from 'react-query'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { Game } from '@/types'
 
 type Props = {
@@ -9,6 +10,9 @@ type Props = {
 }
 
 export default function AddGameToFav({ game }: Props) {
+  const [btnDisabled, setBtnDisabled] = useState<boolean>(false)
+  const [error, setError] = useState<string>('')
+
   const { mutate } = useMutation(
     async (favGame: Game) =>
       await axios.post('/api/user', {
@@ -16,23 +20,37 @@ export default function AddGameToFav({ game }: Props) {
       }),
     {
       onError: (error) => {
-        console.log(error)
+        if (error instanceof AxiosError) {
+          setError(error?.response?.data.message)
+        }
+        setBtnDisabled(false)
       },
       onSuccess: (data) => {
-        console.log(data)
-        console.log('Game Added')
-        // queryClient.invalidateQueries(['posts'])
+        setBtnDisabled(false)
+        setError('')
+        console.log('Game Added', data)
       },
     }
   )
 
   const handleClick = () => {
     mutate(game)
+    setBtnDisabled(true)
   }
 
   return (
-    <button className='btn' onClick={handleClick}>
-      Add to Favorite
-    </button>
+    <>
+      {error ? (
+        <div className='alert alert-warning shadow-lg w-fit'>{error}</div>
+      ) : (
+        <button
+          className={`btn ${btnDisabled ? 'loading' : ''}`}
+          disabled={btnDisabled}
+          onClick={handleClick}
+        >
+          Add to Favorite
+        </button>
+      )}
+    </>
   )
 }
