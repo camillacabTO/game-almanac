@@ -11,7 +11,7 @@ type Props = {
 
 export default async function page(props: Props) {
   let pagesOn = true
-  let url = `https://api.rawg.io/api/games?key=8bce72d488cd4b87ae7ccf04176d2419&dates=2023-03-01,2025-03-01&ordering=-added`
+  let url = `https://api.rawg.io/api/games?key=${process.env.API_KEY}&dates=2023-03-01,2025-03-01&ordering=-added`
 
   if (props.searchParams?.page) {
     url = `${url}&page=${props.searchParams?.page}`

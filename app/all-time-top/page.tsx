@@ -9,7 +9,7 @@ type Props = {
 
 export default async function page(props: Props) {
   let pagesOn = true
-  let url = `https://api.rawg.io/api/games?key=8bce72d488cd4b87ae7ccf04176d2419&ordering=-metacritic`
+  let url = `https://api.rawg.io/api/games?key=${process.env.API_KEY}&ordering=-metacritic`
 
   if (props.searchParams?.page) {
     url = `${url}&page=${props.searchParams?.page}`

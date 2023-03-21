@@ -32,7 +32,7 @@ export async function generateMetadata({
 }
 
 export default async function PlatformResult(props: Props) {
-  let url = `https://api.rawg.io/api/games?key=8bce72d488cd4b87ae7ccf04176d2419&platforms=${props.params.platform}`
+  let url = `https://api.rawg.io/api/games?key=${process.env.API_KEY}&platforms=${props.params.platform}&ordering=-added`
 
   if (props.searchParams?.page) {
     url = `${url}&page=${props.searchParams?.page}`
@@ -42,7 +42,6 @@ export default async function PlatformResult(props: Props) {
 
   return (
     <>
-      <h3>{props.searchParams?.page}</h3>
       <GameList
         games={data}
         hasPagination={true}

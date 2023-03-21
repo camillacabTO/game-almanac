@@ -11,7 +11,7 @@ type Props = {
 
 export default function GameCard({ game, hasDeleteButton }: Props) {
   return (
-    <div className='card bg-neutral shadow-xl border border-primary overflow-hidden'>
+    <div className='card bg-neutral shadow-xl border border-primary overflow-hidden hover:scale-95 transition-scale duration-150 ease-in'>
       <Link href={`games/${game.id}`}>
         <figure>
           <Image

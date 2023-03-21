@@ -12,9 +12,9 @@ type Props = {
 export default async function Home(props: Props) {
   let pagesOn = true
   let today = new Date()
-  let url = `https://api.rawg.io/api/games?key=8bce72d488cd4b87ae7ccf04176d2419&dates=2019-01-01,${
-    today.toISOString().split('T')[0]
-  }&ordering=-added`
+  let url = `https://api.rawg.io/api/games?key=${
+    process.env.API_KEY
+  }&dates=2019-01-01,${today.toISOString().split('T')[0]}&ordering=-added`
 
   if (props.searchParams?.page) {
     url = `${url}&page=${props.searchParams?.page}`
