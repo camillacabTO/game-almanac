@@ -1,7 +1,7 @@
 'use client'
 
-import { useRef, useCallback } from 'react'
-import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+import { useRef } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function Search() {
   const searchRef = useRef<HTMLInputElement>(null)
@@ -17,7 +17,7 @@ export default function Search() {
     if (event.key === 'Enter' && searchRef.current?.value) {
       event.preventDefault()
       router.push('/?' + createQueryString('search', searchRef.current.value))
-      //   searchRef.current.value = ''
+      searchRef.current.value = ''
     }
   }
 

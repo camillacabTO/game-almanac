@@ -29,7 +29,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "pages/auth/[...nextauth].js",
-    "app/AuthProvider.jsx",
+    "components/AuthProvider.jsx",
     "app/AuthProvider.tx",
     "app/api/user/route.js"
   ],

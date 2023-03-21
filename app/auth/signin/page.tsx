@@ -1,13 +1,25 @@
 'use client'
 
+import Loader from '@/components/Loader'
 import { signIn } from 'next-auth/react'
+import { useState } from 'react'
 
 export default function Page() {
+  const [loading, setLoading] = useState<boolean>(false)
+
   const handleLogin =
-    (provider: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
+    (provider: string) => async (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
-      signIn(provider, { callbackUrl: '/' })
+      try {
+        setLoading(true)
+        await signIn(provider, { callbackUrl: '/' })
+        // setLoading(false)
+      } catch (error) {
+        setLoading(false)
+      }
     }
+
+  if (loading) return <Loader />
 
   return (
     <div className='flex items-center justify-center h-[70%]'>

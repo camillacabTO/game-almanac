@@ -2,7 +2,7 @@ import './globals.css'
 import { Monda } from 'next/font/google'
 import TopNav from '@/components/TopNav'
 import SideNav from '@/components/SideNav'
-import AuthProvider from './AuthProvider'
+import AuthProvider from '../components/AuthProvider'
 import QueryWrapper from './QueryWrapper'
 
 export const metadata = {
@@ -27,15 +27,15 @@ export default function RootLayout({
       <body
         className={`${monda.variable} font-monda bg-[url('../assets/ooorganize3.svg')]`}
       >
-        {/* <AuthProvider> */}
-        <QueryWrapper>
-          <TopNav />
-          <main className='flex min-h-screen'>
-            <SideNav />
-            <div className='flex-auto px-6'>{children}</div>
-          </main>
-        </QueryWrapper>
-        {/* </AuthProvider> */}
+        <AuthProvider>
+          <QueryWrapper>
+            <TopNav />
+            <main className='flex min-h-screen'>
+              <SideNav />
+              <div className='flex-auto px-6'>{children}</div>
+            </main>
+          </QueryWrapper>
+        </AuthProvider>
       </body>
     </html>
   )

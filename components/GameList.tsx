@@ -16,7 +16,7 @@ export default function GameList(props: GameListProps) {
   return (
     <>
       <header>
-        <h1 className='text-4xl mb-4'>{props.heading}</h1>
+        <h1 className='text-6xl my-6 font-bold'>{props.heading}</h1>
         <OrderBySelect />
       </header>
       <div>

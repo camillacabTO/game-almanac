@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
   if (!session) {
     return new NextResponse(
       JSON.stringify({
-        message: 'Please signin to add game to your favorite list.',
+        message: 'Please signin to add a game to your favorite list.',
       }),
       { status: 401 }
     )

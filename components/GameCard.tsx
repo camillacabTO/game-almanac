@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Game } from '../types'
 import DeleteFavGame from './DeleteFavGame'
 import Link from 'next/link'
+import noImage from '@/assets/no-image.svg'
 
 type Props = {
   game: Game
@@ -15,7 +16,7 @@ export default function GameCard({ game, hasDeleteButton }: Props) {
         <figure>
           <Image
             className='h-[180px] w-full object-over'
-            src={game?.background_image ? game?.background_image : ''}
+            src={game?.background_image ? game?.background_image : noImage}
             // add default image
             alt='avatar'
             width={200}
@@ -27,7 +28,7 @@ export default function GameCard({ game, hasDeleteButton }: Props) {
           <p>Released: {game?.released}</p>
           <p>Rating: {game?.rating}</p>
           {game?.platforms && (
-            <div className='card-actions justify-end'>
+            <div className='card-actions justify-end mt-3'>
               {game?.platforms?.map((platform) => (
                 <div
                   className='badge badge-secondary'

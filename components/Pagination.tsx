@@ -21,12 +21,22 @@ export default function Pagination(props: {
     previousPage = params.get('page')
   }
 
-  // scroll up after changing page?
+  // scroll up after changing page?const bottomToTop = () => {
+  const bottomToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
 
   return (
     <div className='btn-group grid grid-cols-2 w-80 my-4 mx-auto'>
       {/* disable buttons */}
-      <button className='btn btn-outline p-0'>
+      <button
+        className='btn btn-outline p-0'
+        onClick={bottomToTop}
+        disabled={!props.previous}
+      >
         <Link
           href={{
             pathname: pathname,
@@ -37,7 +47,11 @@ export default function Pagination(props: {
           Previous
         </Link>
       </button>
-      <button className='btn btn-outline p-0'>
+      <button
+        className='btn btn-outline p-0'
+        onClick={bottomToTop}
+        disabled={!props.next}
+      >
         <Link
           href={{
             pathname: pathname,

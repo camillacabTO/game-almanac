@@ -6,7 +6,7 @@ import UserMenu from './UserMenu'
 
 export default async function TopNav() {
   const session = await getServerSession(authOptions)
-  if (session) console.log(session)
+  if (session) console.log('Session from TopNav', session)
 
   return (
     <div className='navbar bg-base-100 p-6 flex flex-col md:flex-row justify-between'>
@@ -50,11 +50,13 @@ export default async function TopNav() {
                 <span>New Releases</span>
               </Link>
             </li>
-            <li>
-              <Link href='/favorite-games' className='hover:text-accent'>
-                <span>Favorite Games</span>
-              </Link>
-            </li>
+            {session && (
+              <li>
+                <Link href='/favorite-games' className='hover:text-accent'>
+                  <span>Favorite Games</span>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
