@@ -10,7 +10,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         fluid: 'repeat(auto-fit, minmax(16rem, 1fr))',
-        rigid: 'repeat(auto-fit, minmax(16rem, 21rem))',
+        rigid: 'repeat(auto-fit, minmax(16rem, 20rem))',
       },
       fontFamily: {
         monda: ['var(--font-monda)'],

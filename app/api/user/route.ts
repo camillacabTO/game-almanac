@@ -30,6 +30,8 @@ export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions)
   const req = await request.json()
 
+  console.log('game to be added', req)
+
   if (!session) {
     return new NextResponse(
       JSON.stringify({

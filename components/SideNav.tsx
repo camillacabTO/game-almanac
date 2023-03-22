@@ -10,7 +10,7 @@ export default function SideNav() {
 
   return (
     <div className='bg-primary-content flex-initial pl-4 min-w-[200px] hidden md:block min-h-full'>
-      <nav className='h-80 w-full'>
+      <nav className='h-80 w-full tracking-wide'>
         <ul className='mt-6 flex flex-col justify-around h-full text-right'>
           <li>
             <Link
@@ -56,11 +56,11 @@ export default function SideNav() {
             <li>
               <Link
                 href='/favorite-games'
-                className={`hover:text-accent pr-4 justify-end  border-primary ${
+                className={`text-secondary hover:text-accent pr-4 justify-end  border-primary ${
                   pathname === '/favorite-games' ? 'border-r-8' : ''
                 }`}
               >
-                <span>Favorite Games</span>
+                <span className=''>Favorite Games</span>
               </Link>
             </li>
           )}

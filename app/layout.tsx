@@ -8,7 +8,7 @@ import QueryWrapper from './QueryWrapper'
 export const metadata = {
   title: 'Game Almanac',
   description:
-    ' A comprehensive guide to the world of gaming, with a wealth of information and resources to explore.',
+    'A comprehensive guide to the world of gaming, with a wealth of information and resources to explore.',
 }
 
 const monda = Monda({

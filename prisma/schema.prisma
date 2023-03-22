@@ -37,9 +37,9 @@ model Session {
 model FavoritedGames {
   id         Int        @id
   name       String
-  released   String
-  rating     Float
-  background_image String
+  released   String?
+  rating     Float?
+  background_image String?
   User       User[]
 }
 

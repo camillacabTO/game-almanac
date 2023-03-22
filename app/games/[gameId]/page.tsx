@@ -4,6 +4,8 @@ import { format } from 'date-fns'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import noImage from '@/assets/no-image.svg'
+import type { Metadata } from 'next'
 
 type Props = {
   params: {
@@ -11,7 +13,14 @@ type Props = {
   }
 }
 
-export default async function page(props: Props) {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const game = await getGameDetails(props.params.gameId)
+  return {
+    title: game.name,
+  }
+}
+
+export default async function GamePage(props: Props) {
   const game = await getGameDetails(props.params.gameId)
 
   return (
@@ -19,7 +28,7 @@ export default async function page(props: Props) {
       <div className='relative w-full h-[14rem] md:h-[30rem] aspect-auto md:col-span-4'>
         <Image
           className='opacity-50'
-          src={game.background_image ? game.background_image : ''}
+          src={game.background_image ? game.background_image : noImage}
           alt='game_background_image'
           fill={true}
         />
@@ -43,33 +52,45 @@ export default async function page(props: Props) {
       </div>
       <div className='md:col-span-2 space-y-2'>
         <h2>Overall Rating:</h2>
-        <p
-          className={`border w-fit py-1 px-2 rounded-md ${
-            game.rating >= 3.7
-              ? 'border-success text-success'
-              : 'border-warning text-warning'
-          }`}
-        >
-          {game.rating}
-        </p>
+        {game.rating ? (
+          <p
+            className={`border w-fit py-1 px-2 rounded-md ${
+              game.rating >= 3.7
+                ? 'border-success text-success'
+                : 'border-warning text-warning'
+            }`}
+          >
+            {game.rating}
+          </p>
+        ) : (
+          <p>Not Available</p>
+        )}
       </div>
       <div className='md:col-span-2 space-y-2'>
         <h2>Metacritic:</h2>
-        <p
-          className={`border w-fit py-1 px-2 rounded-md ${
-            game.metacritic >= 85
-              ? 'border-success text-success'
-              : game.metacritic >= 60
-              ? 'border-warning text-warning'
-              : 'border-warning text-error'
-          }`}
-        >
-          {game.metacritic}
-        </p>
+        {game.metacritic ? (
+          <p
+            className={`border w-fit py-1 px-2 rounded-md ${
+              game.metacritic >= 85
+                ? 'border-success text-success'
+                : game.metacritic >= 60
+                ? 'border-warning text-warning'
+                : 'border-warning text-error'
+            }`}
+          >
+            {game.metacritic}
+          </p>
+        ) : (
+          <p>Not Available</p>
+        )}
       </div>
       <div className='md:col-span-2 space-y-2'>
         <h2>Released Date: </h2>
-        <p>{format(new Date(game.released), 'LLL d, yyyy')}</p>
+        {game?.released ? (
+          <p>{format(new Date(game?.released), 'LLL d, yyyy')}</p>
+        ) : (
+          <p>Not Available</p>
+        )}
       </div>
       <div className='md:col-span-2 space-y-2'>
         <h2>Platforms: </h2>

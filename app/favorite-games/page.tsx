@@ -27,7 +27,7 @@ export default function FavoriteGames() {
 
   return (
     <div>
-      <h1 className='text-4xl mb-4'>{`${data?.name}'s Favorite Games`}</h1>
+      <h1 className='text-2xl sm:text-4xl mb-4'>{`${data?.name}'s Favorite Games`}</h1>
       {/* fix header */}
       <div className='grid grid-cols-rigid gap-4 mt-6 px-12 sm:px-0'>
         {data?.favoriteGames?.map((game) => (
