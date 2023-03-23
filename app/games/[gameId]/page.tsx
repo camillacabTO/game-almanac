@@ -54,7 +54,7 @@ export default async function GamePage(props: Props) {
         <h2>Overall Rating:</h2>
         {game.rating ? (
           <p
-            className={`border w-fit py-1 px-2 rounded-md ${
+            className={`border w-fit py-1 px-3 rounded-md ${
               game.rating >= 3.7
                 ? 'border-success text-success'
                 : 'border-warning text-warning'
@@ -70,7 +70,7 @@ export default async function GamePage(props: Props) {
         <h2>Metacritic:</h2>
         {game.metacritic ? (
           <p
-            className={`border w-fit py-1 px-2 rounded-md ${
+            className={`border w-fit py-1 px-3 rounded-md ${
               game.metacritic >= 85
                 ? 'border-success text-success'
                 : game.metacritic >= 60

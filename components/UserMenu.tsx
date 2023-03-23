@@ -4,6 +4,7 @@ import { Session } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import noImage from '@/assets/no-image.svg'
 
 type Props = {
   session: Session
@@ -19,11 +20,11 @@ export default function UserMenu(props: Props) {
       <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
         <div className='w-18 rounded-full'>
           <Image
-            src={props.session.user?.image ? props.session.user.image : ''}
+            src={props.session.user?.image ? props.session.user.image : noImage}
             alt='avatar'
             width={70}
             height={70}
-            priority
+            // priority
           />
         </div>
       </label>
