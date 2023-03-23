@@ -4,7 +4,6 @@ import { authOptions } from '../../../pages/api/auth/[...nextauth]'
 import { NextResponse } from 'next/server'
 import { type NextRequest } from 'next/server'
 import { Game } from '@/types'
-import { User } from '@prisma/client'
 
 export async function GET(request: NextRequest) {
   const session = await getServerSession(authOptions)
@@ -19,6 +18,7 @@ export async function GET(request: NextRequest) {
   }
 
   const user = await prisma.user.findUnique({
+    // @ts-ignore
     where: { email: session?.user?.email },
     include: { favoriteGames: true },
   })
@@ -48,6 +48,7 @@ export async function POST(request: NextRequest) {
       where: { id: id },
       select: {
         User: {
+          // @ts-ignore
           where: { email: session?.user?.email },
         },
       },
@@ -63,6 +64,7 @@ export async function POST(request: NextRequest) {
     }
 
     const updatedUser = await prisma.user.update({
+      // @ts-ignore
       where: { email: session?.user?.email },
       data: {
         favoriteGames: {
@@ -105,6 +107,7 @@ export async function DELETE(request: NextRequest) {
 
   try {
     const updatedUser = await prisma.user.update({
+      // @ts-ignore
       where: { email: session?.user?.email },
       data: {
         favoriteGames: {

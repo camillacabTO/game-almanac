@@ -29,6 +29,7 @@ export default function RootLayout({
       >
         <AuthProvider>
           <QueryWrapper>
+            {/* @ts-ignore */}
             <TopNav />
             <main className='flex min-h-screen'>
               <SideNav />

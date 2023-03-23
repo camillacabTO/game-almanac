@@ -3,9 +3,10 @@ import { Game } from '../types'
 import DeleteFavGame from './DeleteFavGame'
 import Link from 'next/link'
 import noImage from '@/assets/no-image.svg'
+import { FavoritedGames } from '@prisma/client'
 
 type Props = {
-  game: Game
+  game: Game | FavoritedGames
   hasDeleteButton: boolean
 }
 
@@ -27,7 +28,7 @@ export default function GameCard({ game, hasDeleteButton }: Props) {
           <h2 className='card-title'>{game?.name}</h2>
           <p>Released: {game?.released}</p>
           <p>Rating: {game?.rating}</p>
-          {game?.platforms && (
+          {'platforms' in game && (
             <div className='card-actions justify-end mt-3'>
               {game?.platforms?.map((platform) => (
                 <div

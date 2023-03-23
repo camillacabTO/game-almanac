@@ -35,6 +35,7 @@ export default async function TopNav() {
           )}
         </div>
         <div className='dropdown dropdown-end md:hidden text-sm ml-3'>
+          {/* @ts-ignore */}
           <label tabIndex='0' className='btn btn-circle'>
             <svg
               className='swap-off fill-current'
@@ -47,6 +48,7 @@ export default async function TopNav() {
             </svg>
           </label>
           <ul
+            //  @ts-ignore
             tabIndex='0'
             className='dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52'
           >
